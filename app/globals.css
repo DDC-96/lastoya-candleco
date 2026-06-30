@@ -1,0 +1,59 @@
+@import "tailwindcss";
+
+/* ── Design tokens ── */
+@theme {
+  --color-night:      oklch(0.97 0.008 72);
+  --color-panel:      oklch(0.93 0.008 72);
+  --color-panel-lift: oklch(0.88 0.010 72);
+  --color-ink:        oklch(0.15 0.012 65);
+  --color-ink-dim:    oklch(0.44 0.010 65);
+  --color-flame:      oklch(0.72 0.130 67);
+  --color-flame-dim:  oklch(0.55 0.120 67);
+  --color-ember:      oklch(0.48 0.090 32);
+  --color-wire:       oklch(0.82 0.008 65);
+  --color-wire-faint: oklch(0.90 0.006 65);
+  --color-overlay:    oklch(0.12 0.010 65);
+  --color-flame-text: oklch(0.52 0.122 67);
+  --color-base:       var(--color-night);
+}
+
+/* next/font injects --font-piazzolla and --font-jost as CSS vars */
+@theme inline {
+  --font-display: var(--font-piazzolla);
+  --font-sans:    var(--font-jost);
+}
+
+/* ── Base ── */
+html {
+  scroll-behavior: smooth;
+  color-scheme: light;
+}
+
+body {
+  background-color: var(--color-base);
+  color: var(--color-ink);
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  font-optical-sizing: auto;
+}
+
+::selection {
+  background: oklch(0.72 0.130 67 / 0.30);
+  color: var(--color-ink);
+}
+
+/* ── Scrollbar ── */
+::-webkit-scrollbar        { width: 5px; }
+::-webkit-scrollbar-track  { background: var(--color-base); }
+::-webkit-scrollbar-thumb  { background: var(--color-wire); border-radius: 3px; }
+::-webkit-scrollbar-thumb:hover { background: var(--color-ink-dim); }
+
+/* ── Reduced motion ── */
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
+}
