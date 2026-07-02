@@ -17,7 +17,7 @@ export function ShopFilter({ activeCollection }: ShopFilterProps) {
 
   const base =
     "px-4 py-2 text-sm tracking-wide border transition-colors cursor-pointer";
-  const active = "border-flame text-flame";
+  const active = "border-flame text-flame-text";
   const inactive = "border-wire text-ink-dim hover:border-ink hover:text-ink";
 
   return (

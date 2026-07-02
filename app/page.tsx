@@ -110,7 +110,7 @@ export default function HomePage() {
       <section className="relative h-[55vh] min-h-[360px] overflow-hidden">
         <Image
           src={LIFESTYLE}
-          alt="Lastoya candle burning"
+          alt="A Lastoya candle burning in a softly lit room"
           fill
           className="object-cover object-center"
           sizes="100vw"

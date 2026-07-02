@@ -8,7 +8,7 @@ const collections = [
 const links = [
   { label: "Shop", href: "/shop" },
   { label: "Our Story", href: "/#story" },
-  { label: "Contact", href: "mailto:hello@lastoyacandleco.com" },
+  { label: "Contact", href: "mailto:lastoyacandles@examplemail.com" },
 ];
 
 export function Footer() {
@@ -35,7 +35,7 @@ export function Footer() {
               <li key={c.href}>
                 <Link
                   href={c.href}
-                  className="text-sm text-ink-dim hover:text-flame transition-colors"
+                  className="text-sm text-ink-dim hover:text-flame-text transition-colors"
                 >
                   {c.label}
                 </Link>
@@ -54,7 +54,7 @@ export function Footer() {
               <li key={l.href}>
                 <Link
                   href={l.href}
-                  className="text-sm text-ink-dim hover:text-flame transition-colors"
+                  className="text-sm text-ink-dim hover:text-flame-text transition-colors"
                 >
                   {l.label}
                 </Link>

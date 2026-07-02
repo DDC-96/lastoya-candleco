@@ -1,6 +1,6 @@
 "use client";
 
-import { useRef } from "react";
+import { useEffect, useRef } from "react";
 import Image from "next/image";
 import Link from "next/link";
 import { motion, AnimatePresence } from "framer-motion";
@@ -11,6 +11,15 @@ export function CartDrawer() {
   const { items, isOpen, closeCart, removeItem, updateQuantity, total } =
     useCartStore();
   const overlayRef = useRef<HTMLDivElement>(null);
+
+  useEffect(() => {
+    if (!isOpen) return;
+    const handleKeyDown = (e: KeyboardEvent) => {
+      if (e.key === "Escape") closeCart();
+    };
+    document.addEventListener("keydown", handleKeyDown);
+    return () => document.removeEventListener("keydown", handleKeyDown);
+  }, [isOpen, closeCart]);
 
   const handleOverlayClick = (e: React.MouseEvent) => {
     if (e.target === overlayRef.current) closeCart();
@@ -113,7 +122,7 @@ export function CartDrawer() {
                               <button
                                 onClick={() => removeItem(item.id)}
                                 aria-label={`Remove ${item.name}`}
-                                className="text-ink-dim hover:text-flame-text transition-colors shrink-0 mt-0.5"
+                                className="p-2 text-ink-dim hover:text-flame-text transition-colors shrink-0 mt-0.5 -mr-1"
                               >
                                 <X size={14} strokeWidth={1.5} />
                               </button>
@@ -131,7 +140,7 @@ export function CartDrawer() {
                                     updateQuantity(item.id, item.quantity - 1)
                                   }
                                   aria-label="Decrease quantity"
-                                  className="p-1.5 text-ink-dim hover:text-ink transition-colors"
+                                  className="p-3 text-ink-dim hover:text-ink transition-colors"
                                 >
                                   <Minus size={12} strokeWidth={2} />
                                 </button>
@@ -143,7 +152,7 @@ export function CartDrawer() {
                                     updateQuantity(item.id, item.quantity + 1)
                                   }
                                   aria-label="Increase quantity"
-                                  className="p-1.5 text-ink-dim hover:text-ink transition-colors"
+                                  className="p-3 text-ink-dim hover:text-ink transition-colors"
                                 >
                                   <Plus size={12} strokeWidth={2} />
                                 </button>

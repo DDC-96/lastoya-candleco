@@ -50,7 +50,7 @@ export default function CheckoutPage() {
       <div className="min-h-screen flex items-center justify-center px-6">
         <div className="text-center max-w-sm">
           <div className="w-16 h-16 rounded-full border border-flame flex items-center justify-center mx-auto mb-8">
-            <Check size={22} className="text-flame" strokeWidth={1.5} />
+            <Check size={22} className="text-flame-text" strokeWidth={1.5} />
           </div>
           <h1 className="font-display text-3xl text-ink mb-3">
             Order placed.
@@ -82,7 +82,7 @@ export default function CheckoutPage() {
               <span key={s} className="flex items-center gap-2">
                 <span
                   className={`text-xs tracking-[0.12em] uppercase transition-colors ${
-                    i <= currentIdx ? "text-flame" : "text-ink-dim"
+                    i <= currentIdx ? "text-flame-text" : "text-ink-dim"
                   }`}
                 >
                   {STEP_LABELS[s]}
@@ -249,7 +249,7 @@ export default function CheckoutPage() {
                       </span>
                       <button
                         onClick={onEdit}
-                        className="text-xs text-flame hover:text-ink transition-colors ml-4 shrink-0"
+                        className="text-xs text-flame-text hover:text-ink transition-colors ml-4 shrink-0"
                       >
                         Edit
                       </button>
@@ -285,7 +285,7 @@ export default function CheckoutPage() {
             {items.length === 0 ? (
               <p className="text-sm text-ink-dim">
                 Your cart is empty.{" "}
-                <Link href="/shop" className="text-flame hover:text-ink transition-colors underline underline-offset-2">
+                <Link href="/shop" className="text-flame-text hover:text-ink transition-colors underline underline-offset-2">
                   Browse candles
                 </Link>
               </p>
@@ -334,7 +334,7 @@ export default function CheckoutPage() {
               </div>
               <div className="flex justify-between pt-3 border-t border-wire-faint">
                 <span className="font-display text-base text-ink">Total</span>
-                <span className="font-display text-base text-flame tabular-nums">
+                <span className="font-display text-base text-flame-text tabular-nums">
                   ${total.toFixed(2)}
                 </span>
               </div>
