@@ -14,30 +14,20 @@ const STORY =
 const LIFESTYLE =
   "https://images.unsplash.com/photo-1537948756265-406a522f1a45?auto=format&fit=crop&w=2400&q=85";
 
-const scentFamilies = [
+const collections = [
   {
-    name: "Woody",
-    slug: "woody",
+    name: "Signature",
+    slug: "Signature",
+    note: "Cedar · Amber · Sage",
     image:
-      "https://images.unsplash.com/photo-1561212856-44e9bae482aa?auto=format&fit=crop&w=600&q=80",
+      "https://images.unsplash.com/photo-1561212856-44e9bae482aa?auto=format&fit=crop&w=800&q=80",
   },
   {
-    name: "Spiced",
-    slug: "spiced",
+    name: "Limited",
+    slug: "Limited",
+    note: "Jasmine · Bourbon · Oud",
     image:
-      "https://images.unsplash.com/photo-1601922046210-41e129a3e64a?auto=format&fit=crop&w=600&q=80",
-  },
-  {
-    name: "Floral",
-    slug: "floral",
-    image:
-      "https://images.unsplash.com/photo-1489101960932-eb71762e6bc8?auto=format&fit=crop&w=600&q=80",
-  },
-  {
-    name: "Earthy",
-    slug: "earthy",
-    image:
-      "https://images.unsplash.com/photo-1528351655744-27cc30462816?auto=format&fit=crop&w=600&q=80",
+      "https://images.unsplash.com/photo-1489101960932-eb71762e6bc8?auto=format&fit=crop&w=800&q=80",
   },
 ];
 
@@ -46,16 +36,19 @@ const reviews = [
     text: "Bought Río Noche for my husband and he hasn't put it down since. The cedar and amber together — it smells exactly like evenings on the river.",
     author: "Marisol V.",
     scent: "Río Noche",
+    stars: 5,
   },
   {
     text: "Tierra Santa is the only candle I burn when I need to settle into the day. Clean, a little sacred, exactly like they describe it. Always stocked.",
     author: "D. Reyes",
     scent: "Tierra Santa",
+    stars: 5,
   },
   {
     text: "I gifted Polvo de Canela to everyone on my list this year. Every single person texted me asking where it was from. The packaging, the scent — perfect.",
     author: "Lena K.",
     scent: "Polvo de Canela",
+    stars: 4,
   },
 ];
 
@@ -132,33 +125,36 @@ export default function HomePage() {
         </div>
       </section>
 
-      {/* ── Shop by scent ─────────────────────────────── */}
+      {/* ── Shop by collection ────────────────────────── */}
       <section className="py-24 px-6 bg-panel">
         <div className="max-w-6xl mx-auto">
           <FadeUp>
             <h2 className="font-display text-[clamp(1.75rem,4vw,2.5rem)] text-ink text-balance mb-12">
-              Shop by scent
+              Shop the collection
             </h2>
           </FadeUp>
-          <div className="grid grid-cols-2 md:grid-cols-4 gap-8 md:gap-12">
-            {scentFamilies.map((family, i) => (
-              <FadeUp key={family.name} delay={i * 0.09}>
+          <div className="grid grid-cols-1 sm:grid-cols-2 gap-8 max-w-xl mx-auto sm:max-w-none">
+            {collections.map((col, i) => (
+              <FadeUp key={col.name} delay={i * 0.1}>
                 <Link
-                  href={`/shop?scent=${family.slug}`}
-                  className="group flex flex-col items-center gap-4"
+                  href={`/shop?collection=${col.slug}`}
+                  className="group flex flex-col items-center gap-5"
                 >
-                  <div className="relative w-full aspect-square overflow-hidden rounded-full bg-panel-lift">
+                  <div className="relative w-48 aspect-square overflow-hidden rounded-full bg-panel-lift">
                     <Image
-                      src={family.image}
-                      alt={family.name}
+                      src={col.image}
+                      alt={col.name}
                       fill
                       className="object-cover transition-transform duration-700 group-hover:scale-105"
-                      sizes="(min-width: 768px) 25vw, 50vw"
+                      sizes="(min-width: 640px) 192px, 192px"
                     />
                   </div>
-                  <span className="text-xs tracking-[0.15em] uppercase text-ink-dim group-hover:text-ink transition-colors">
-                    {family.name}
-                  </span>
+                  <div className="text-center">
+                    <p className="text-sm font-medium tracking-[0.08em] uppercase text-ink group-hover:text-flame-text transition-colors">
+                      {col.name}
+                    </p>
+                    <p className="text-xs text-ink-dim mt-1">{col.note}</p>
+                  </div>
                 </Link>
               </FadeUp>
             ))}
@@ -176,7 +172,7 @@ export default function HomePage() {
             className="aspect-[4/5] bg-panel"
           />
 
-          <FadeUp delay={0.1}>
+          <FadeUp delay={0.1} direction="right">
             <div className="space-y-6 max-w-prose">
               <h2 className="font-display text-[clamp(1.75rem,4vw,2.5rem)] text-ink leading-tight text-balance">
                 From Our Hands,<br />to Your Home.
@@ -237,9 +233,9 @@ export default function HomePage() {
                       <Star
                         key={j}
                         size={12}
-                        strokeWidth={0}
-                        fill="currentColor"
-                        className="text-flame-text"
+                        strokeWidth={j < review.stars ? 0 : 1.5}
+                        fill={j < review.stars ? "currentColor" : "none"}
+                        className={j < review.stars ? "text-flame-text" : "text-wire"}
                       />
                     ))}
                   </div>
@@ -260,18 +256,16 @@ export default function HomePage() {
       </section>
 
       {/* ── Newsletter ───────────────────────────────── */}
-      <section className="py-24 px-6 border-t border-wire-faint">
+      <section className="py-24 px-6 bg-panel">
         <div className="max-w-lg mx-auto text-center">
-          <FadeUp>
-            <h2 className="font-display text-3xl text-ink mb-3">
-              New pours, first.
-            </h2>
-            <p className="text-ink-dim text-sm leading-relaxed mb-8">
-              Limited editions and new scents go to the list before anywhere
-              else.
-            </p>
-            <NewsletterForm />
-          </FadeUp>
+          <h2 className="font-display text-3xl text-ink mb-3">
+            New pours, <span className="text-flame-text">first.</span>
+          </h2>
+          <p className="text-ink-dim text-sm leading-relaxed mb-8">
+            Limited editions and new scents go to the list before anywhere
+            else.
+          </p>
+          <NewsletterForm />
         </div>
       </section>
     </>
