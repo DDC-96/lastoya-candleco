@@ -28,7 +28,7 @@ export function HeroSection() {
   return (
     <section
       ref={ref}
-      className="relative h-[65vh] min-h-[420px] flex items-end pb-20 md:pb-28 overflow-hidden"
+      className="relative h-[75vh] min-h-[500px] flex items-end pb-20 md:pb-28 overflow-hidden"
     >
       {/* Parallax image */}
       <motion.div
@@ -40,7 +40,7 @@ export function HeroSection() {
           fill
           priority
           className="object-cover"
-          style={{ objectPosition: "center 20%" }}
+          style={{ objectPosition: "center 50%" }}
           sizes="100vw"
         />
       </motion.div>
