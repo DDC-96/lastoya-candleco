@@ -71,7 +71,7 @@ export function HeroSection() {
           initial={{ opacity: 0, y: 16 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.7, ease: [0.16, 1, 0.3, 1], delay: 0.15 }}
-          className="text-sm font-semibold tracking-[0.18em] text-ember uppercase mb-6 block"
+          className="text-sm font-semibold tracking-[0.18em] text-white/80 uppercase mb-6 block"
         >
           Riverside, CA · Small-batch · Hand-poured
         </motion.span>
