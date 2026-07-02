@@ -2,9 +2,9 @@
 
 import Image from "next/image";
 import Link from "next/link";
-import { motion, AnimatePresence } from "framer-motion";
+import { useState, useEffect, useRef } from "react";
+import { motion, AnimatePresence, useInView } from "framer-motion";
 import { ShoppingBag } from "lucide-react";
-import { useState } from "react";
 import { useCartStore } from "@/lib/cart-store";
 import type { Product } from "@/lib/products";
 
@@ -20,7 +20,12 @@ export function ProductCard({
   staggerDelay = 0,
 }: ProductCardProps) {
   const [added, setAdded] = useState(false);
+  const [mounted, setMounted] = useState(false);
   const addItem = useCartStore((s) => s.addItem);
+  const cardRef = useRef<HTMLElement>(null);
+  const inView = useInView(cardRef, { once: true, margin: "-60px" });
+
+  useEffect(() => { setMounted(true); }, []);
 
   const handleAddToCart = () => {
     addItem({
@@ -36,10 +41,10 @@ export function ProductCard({
 
   return (
     <motion.article
-      initial={{ opacity: 0, y: 20 }}
-      whileInView={{ opacity: 1, y: 0 }}
-      viewport={{ once: true, margin: "-60px" }}
-      transition={{ duration: 0.5, ease: [0.16, 1, 0.3, 1], delay: staggerDelay }}
+      ref={cardRef}
+      initial={false}
+      animate={!mounted || inView ? { opacity: 1, y: 0 } : { opacity: 0, y: 20 }}
+      transition={mounted && inView ? { duration: 0.5, ease: [0.16, 1, 0.3, 1], delay: staggerDelay } : { duration: 0 }}
       className="group flex flex-col"
     >
       {/* Image container */}

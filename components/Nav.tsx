@@ -1,6 +1,6 @@
 "use client";
 
-import { useEffect, useState } from "react";
+import { useEffect, useRef, useState } from "react";
 import Image from "next/image";
 import Link from "next/link";
 import { ShoppingBag, Menu, X } from "lucide-react";
@@ -9,7 +9,7 @@ import { useCartStore } from "@/lib/cart-store";
 
 const leftLinks = [
   { label: "New", href: "/shop" },
-  { label: "Best Sellers", href: "/shop?collection=best-sellers" },
+  { label: "Best Sellers", href: "/shop" },
   { label: "About", href: "/#story" },
   { label: "FAQ", href: "/faq" },
   { label: "Bulk Orders", href: "/bulk-orders" },
@@ -20,6 +20,7 @@ export function Nav() {
   const [scrolled, setScrolled] = useState(false);
   const [menuOpen, setMenuOpen] = useState(false);
   const { itemCount, openCart } = useCartStore();
+  const menuRef = useRef<HTMLDivElement>(null);
 
   useEffect(() => {
     const onScroll = () => setScrolled(window.scrollY > 48);
@@ -32,6 +33,37 @@ export function Nav() {
     if (menuOpen) document.body.style.overflow = "hidden";
     else document.body.style.overflow = "";
     return () => { document.body.style.overflow = ""; };
+  }, [menuOpen]);
+
+  // Escape key + focus trap
+  useEffect(() => {
+    if (!menuOpen) return;
+    const handleKeyDown = (e: KeyboardEvent) => {
+      if (e.key === "Escape") {
+        setMenuOpen(false);
+        return;
+      }
+      if (e.key !== "Tab") return;
+      const overlay = menuRef.current;
+      if (!overlay) return;
+      const focusable = Array.from(
+        overlay.querySelectorAll<HTMLElement>(
+          'a[href], button:not([disabled]), [tabindex]:not([tabindex="-1"])'
+        )
+      );
+      if (!focusable.length) return;
+      const first = focusable[0];
+      const last = focusable[focusable.length - 1];
+      if (e.shiftKey) {
+        if (document.activeElement === first) { e.preventDefault(); last.focus(); }
+      } else {
+        if (document.activeElement === last) { e.preventDefault(); first.focus(); }
+      }
+    };
+    document.addEventListener("keydown", handleKeyDown);
+    // Move focus into overlay on open
+    menuRef.current?.querySelector<HTMLElement>("a, button")?.focus();
+    return () => document.removeEventListener("keydown", handleKeyDown);
   }, [menuOpen]);
 
   const linkCls = scrolled
@@ -57,7 +89,7 @@ export function Nav() {
           <nav className="hidden lg:flex items-center gap-5">
             {leftLinks.map((l) => (
               <Link
-                key={l.href}
+                key={l.label}
                 href={l.href}
                 className={`text-xs tracking-wide transition-colors whitespace-nowrap ${linkCls}`}
               >
@@ -71,6 +103,8 @@ export function Nav() {
             <button
               onClick={() => setMenuOpen((o) => !o)}
               aria-label={menuOpen ? "Close menu" : "Open menu"}
+              aria-expanded={menuOpen}
+              aria-controls="mobile-menu"
               className={`p-1 transition-colors ${linkCls}`}
             >
               {menuOpen ? (
@@ -126,6 +160,11 @@ export function Nav() {
       <AnimatePresence>
         {menuOpen && (
           <motion.div
+            ref={menuRef}
+            id="mobile-menu"
+            role="dialog"
+            aria-modal="true"
+            aria-label="Navigation menu"
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
             exit={{ opacity: 0 }}
@@ -135,7 +174,7 @@ export function Nav() {
             <nav className="flex flex-col gap-6">
               {leftLinks.map((l, i) => (
                 <motion.div
-                  key={l.href}
+                  key={l.label}
                   initial={{ opacity: 0, x: -12 }}
                   animate={{ opacity: 1, x: 0 }}
                   transition={{ delay: i * 0.07 + 0.05 }}

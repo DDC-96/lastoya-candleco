@@ -54,7 +54,7 @@ export function HeroSection() {
           className="absolute bottom-0 left-0 right-0 h-[60%] pointer-events-none"
           style={{
             background:
-              "radial-gradient(ellipse 70% 50% at 25% 100%, oklch(0.72 0.130 67 / 0.12), transparent 70%)",
+              "radial-gradient(ellipse 70% 50% at 25% 100%, color-mix(in oklch, var(--color-flame) 12%, transparent), transparent 70%)",
           }}
           animate={{ opacity: [0.5, 1, 0.5] }}
           transition={{
