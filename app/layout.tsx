@@ -41,6 +41,7 @@ export default function RootLayout({
   return (
     <html
       lang="en"
+      data-scroll-behavior="smooth"
       className={`${piazzolla.variable} ${jost.variable} h-full`}
     >
       <body className="flex flex-col min-h-full antialiased">
