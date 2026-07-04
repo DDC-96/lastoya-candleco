@@ -97,7 +97,7 @@ export default async function ProductPage({
                 <h1 className="font-display text-4xl md:text-5xl text-ink mt-2 leading-tight text-balance">
                   {product.name}
                 </h1>
-                <p className="mt-3 font-display text-2xl text-flame">
+                <p className="mt-3 font-display text-2xl text-flame-text">
                   ${product.price}
                 </p>
               </div>
