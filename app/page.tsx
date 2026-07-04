@@ -143,7 +143,7 @@ export default function HomePage() {
                   <div className="relative w-48 aspect-square overflow-hidden rounded-full bg-panel-lift">
                     <Image
                       src={col.image}
-                      alt={col.name}
+                      alt={`${col.name} collection — ${col.note}`}
                       fill
                       className="object-cover transition-transform duration-700 group-hover:scale-105"
                       sizes="(min-width: 640px) 192px, 192px"

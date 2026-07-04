@@ -100,12 +100,13 @@ export default function CheckoutPage() {
               <h1 className="font-display text-3xl text-ink mb-8">Contact</h1>
               <div className="space-y-4">
                 <div>
-                  <label className={labelClass}>Email address</label>
+                  <label className={labelClass} htmlFor="checkout-email">Email address</label>
                   <input
+                    id="checkout-email"
                     type="email"
                     value={contact.email}
                     onChange={(e) => setContact({ email: e.target.value })}
-                    placeholder="your@email.com"
+                    placeholder="you@example.com"
                     required
                     autoFocus
                     className={inputClass}
@@ -145,8 +146,9 @@ export default function CheckoutPage() {
                     const label = idx === 0 ? "First name" : "Last name";
                     return (
                       <div key={key}>
-                        <label className={labelClass}>{label}</label>
+                        <label className={labelClass} htmlFor={`checkout-${key}`}>{label}</label>
                         <input
+                          id={`checkout-${key}`}
                           type="text"
                           value={shipping[key]}
                           onChange={(e) =>
@@ -249,6 +251,7 @@ export default function CheckoutPage() {
                       </span>
                       <button
                         onClick={onEdit}
+                        aria-label={`Edit ${title.toLowerCase()}`}
                         className="text-xs text-flame-text hover:text-ink transition-colors ml-4 shrink-0"
                       >
                         Edit
