@@ -1,5 +1,7 @@
 import type { Metadata } from "next";
 import { FadeUp } from "@/components/FadeUp";
+import { PageHero } from "@/components/PageHero";
+import { FAQSection } from "@/components/FAQAccordion";
 
 export const metadata: Metadata = { title: "FAQ" };
 
@@ -84,59 +86,27 @@ export default function FAQPage() {
       <div className="max-w-3xl mx-auto">
 
         {/* ── Header ─────────────────────────────────── */}
-        <FadeUp>
-          <h1 className="font-display font-bold text-[clamp(2.5rem,6vw,4rem)] text-ink leading-tight text-balance mb-6">
-            Frequently Asked
-          </h1>
-          <p className="text-ink-dim text-sm leading-relaxed max-w-md">
-            Can&apos;t find what you&apos;re looking for? Reach us at{" "}
-            <a
-              href="mailto:lastoyacandles@gmail.com"
-              className="text-flame-text hover:text-ink transition-colors underline underline-offset-2"
-            >
-              lastoyacandles@gmail.com
-            </a>
-            .
-          </p>
-        </FadeUp>
+        <PageHero
+          heading="Frequently Asked"
+          sub={
+            <p className="text-ink-dim text-sm leading-relaxed max-w-md">
+              Can&apos;t find what you&apos;re looking for? Reach us at{" "}
+              <a
+                href="mailto:lastoyacandles@gmail.com"
+                className="text-flame-text hover:text-ink transition-colors underline underline-offset-2"
+              >
+                lastoyacandles@gmail.com
+              </a>
+              .
+            </p>
+          }
+        />
 
         {/* ── FAQ sections ───────────────────────────── */}
         <div className="mt-16 space-y-14">
           {faqs.map((section, si) => (
             <FadeUp key={section.category} delay={si * 0.06}>
-              <p className="text-xs font-medium tracking-[0.15em] uppercase text-ink-dim mb-6">
-                {section.category}
-              </p>
-              <div>
-                {section.items.map((item) => (
-                  <details
-                    key={item.q}
-                    className="group border-b border-wire-faint"
-                  >
-                    <summary className="flex items-center justify-between gap-6 py-5 cursor-pointer list-none [&::-webkit-details-marker]:hidden">
-                      <span className="font-display font-medium text-base text-ink leading-snug">
-                        {item.q}
-                      </span>
-                      <span className="shrink-0 w-4 h-4 flex items-center justify-center text-ink-dim group-open:text-ink transition-colors">
-                        <svg
-                          width="12"
-                          height="12"
-                          viewBox="0 0 12 12"
-                          fill="none"
-                          aria-hidden="true"
-                          className="transition-transform duration-200 group-open:rotate-45"
-                        >
-                          <line x1="6" y1="0" x2="6" y2="12" stroke="currentColor" strokeWidth="1.5" />
-                          <line x1="0" y1="6" x2="12" y2="6" stroke="currentColor" strokeWidth="1.5" />
-                        </svg>
-                      </span>
-                    </summary>
-                    <p className="pb-5 text-sm text-ink-dim leading-[1.8] max-w-prose text-pretty">
-                      {item.a}
-                    </p>
-                  </details>
-                ))}
-              </div>
+              <FAQSection category={section.category} items={section.items} />
             </FadeUp>
           ))}
         </div>

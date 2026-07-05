@@ -1,6 +1,8 @@
 import type { Metadata } from "next";
 import Link from "next/link";
 import { FadeUp } from "@/components/FadeUp";
+import { PageHero } from "@/components/PageHero";
+import { EmailLink } from "@/components/EmailLink";
 
 export const metadata: Metadata = { title: "Contact" };
 
@@ -12,33 +14,28 @@ export default function ContactPage() {
       <div className="max-w-3xl mx-auto">
 
         {/* ── Header ─────────────────────────────────── */}
-        <FadeUp>
-          <h1 className="font-display text-[clamp(2.5rem,6vw,4rem)] text-ink leading-tight text-balance mb-6">
-            Contact Us
-          </h1>
-          <p className="text-ink-dim leading-[1.8] max-w-md text-pretty">
-            Questions about an order, a candle, or anything else — we read every
-            email and respond within 2–3 business days.
-          </p>
-        </FadeUp>
+        <PageHero
+          heading="Contact Us"
+          sub={
+            <p className="text-ink-dim leading-[1.8] max-w-md text-pretty">
+              Questions about an order, a candle, or anything else — we read every
+              email and respond within 2–3 business days.
+            </p>
+          }
+        />
 
         {/* ── Email ──────────────────────────────────── */}
-        <FadeUp delay={0.1}>
+        <FadeUp delay={0.05}>
           <div className="mt-16 border-t border-wire-faint pt-10">
             <p className="text-xs font-medium tracking-[0.15em] uppercase text-ink-dim mb-4">
               Email
             </p>
-            <a
-              href={`mailto:${EMAIL}`}
-              className="font-display text-2xl md:text-3xl text-ink hover:text-flame-text transition-colors"
-            >
-              {EMAIL}
-            </a>
+            <EmailLink email={EMAIL} />
           </div>
         </FadeUp>
 
         {/* ── Bulk orders nudge ──────────────────────── */}
-        <FadeUp delay={0.15}>
+        <FadeUp delay={0.12}>
           <div className="mt-12 border-t border-wire-faint pt-10">
             <p className="text-xs font-medium tracking-[0.15em] uppercase text-ink-dim mb-4">
               Bulk &amp; Events

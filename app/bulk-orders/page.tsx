@@ -3,6 +3,7 @@ import Link from "next/link";
 import { ArrowRight } from "lucide-react";
 import { FadeUp } from "@/components/FadeUp";
 import { Button } from "@/components/Button";
+import { PageHero } from "@/components/PageHero";
 
 export const metadata: Metadata = { title: "Bulk & Events" };
 
@@ -41,45 +42,46 @@ export default function BulkOrdersPage() {
       <div className="max-w-3xl mx-auto">
 
         {/* ── Header ─────────────────────────────────── */}
-        <FadeUp>
-          <h1 className="font-display text-[clamp(2.5rem,6vw,4rem)] text-ink leading-tight text-balance mb-6">
-            Bulk &amp; Events
-          </h1>
-          <p className="text-ink-dim leading-[1.8] max-w-xl text-pretty">
-            Candles for corporate gifts, weddings, and occasions that call for
-            something made by hand. Every unit is poured to order — nothing comes
-            off a shelf.
-          </p>
-        </FadeUp>
+        <PageHero
+          heading="Bulk & Events"
+          sub={
+            <p className="text-ink-dim leading-[1.8] max-w-xl text-pretty">
+              Candles for corporate gifts, weddings, and occasions that call for
+              something made by hand. Every unit is poured to order — nothing comes
+              off a shelf.
+            </p>
+          }
+        />
 
         {/* ── How it works ───────────────────────────── */}
         <FadeUp delay={0.1}>
-          <div className="mt-20">
-            <p className="text-xs font-medium tracking-[0.15em] uppercase text-ink-dim mb-10">
-              How it works
-            </p>
-            <div className="space-y-0">
-              {steps.map((step, i) => (
-                <div
-                  key={step.n}
-                  className="grid grid-cols-[auto_1fr] gap-8 py-8 border-b border-wire-faint first:border-t"
-                >
-                  <span className="font-display text-[clamp(1.5rem,3vw,2rem)] text-flame-text leading-none pt-0.5">
-                    {step.n}
-                  </span>
-                  <div>
-                    <h2 className="font-display text-xl text-ink mb-2">
-                      {step.title}
-                    </h2>
-                    <p className="text-ink-dim leading-[1.8] text-pretty">
-                      {step.body}
-                    </p>
-                  </div>
-                </div>
-              ))}
-            </div>
-          </div>
+          <p className="text-xs font-medium tracking-[0.15em] uppercase text-ink-dim mt-20 mb-10">
+            How it works
+          </p>
         </FadeUp>
+        <div>
+          {steps.map((step, i) => (
+            <FadeUp key={step.n} delay={0.15 + i * 0.12}>
+              <div
+                className={`grid grid-cols-[auto_1fr] gap-8 py-8 border-b border-wire-faint${
+                  i === 0 ? " border-t" : ""
+                }`}
+              >
+                <span className="font-display text-[clamp(1.5rem,3vw,2rem)] text-flame-text leading-none pt-0.5">
+                  {step.n}
+                </span>
+                <div>
+                  <h2 className="font-display text-xl text-ink mb-2">
+                    {step.title}
+                  </h2>
+                  <p className="text-ink-dim leading-[1.8] text-pretty">
+                    {step.body}
+                  </p>
+                </div>
+              </div>
+            </FadeUp>
+          ))}
+        </div>
 
         {/* ── Details ────────────────────────────────── */}
         <FadeUp delay={0.05}>
