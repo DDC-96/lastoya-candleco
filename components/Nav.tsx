@@ -8,7 +8,6 @@ import { motion, AnimatePresence } from "framer-motion";
 import { useCartStore } from "@/lib/cart-store";
 
 const leftLinks = [
-  { label: "New", href: "/shop" },
   { label: "Best Sellers", href: "/shop" },
   { label: "About", href: "/#story" },
   { label: "FAQ", href: "/faq" },

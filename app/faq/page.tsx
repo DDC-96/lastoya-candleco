@@ -15,7 +15,7 @@ const faqs: { category: string; items: { q: string; a: string }[] }[] = [
       },
       {
         q: "Can I change or cancel my order?",
-        a: "We begin production quickly. Email us at lastoyacandles@examplemail.com within 24 hours of placing your order and we'll do our best to accommodate changes.",
+        a: "We begin production quickly. Email us at lastoyacandles@gmail.com within 24 hours of placing your order and we'll do our best to accommodate changes.",
       },
       {
         q: "Do you offer gift wrapping?",
@@ -28,7 +28,7 @@ const faqs: { category: string; items: { q: string; a: string }[] }[] = [
     items: [
       {
         q: "How long does processing take?",
-        a: "Orders are processed within 3–5 business days. Because every candle is poured to order, we don't ship from existing stock.",
+        a: "Orders are processed within 3–5 business days.",
       },
       {
         q: "How long does shipping take?",
@@ -40,7 +40,7 @@ const faqs: { category: string; items: { q: string; a: string }[] }[] = [
       },
       {
         q: "Is shipping free?",
-        a: "Shipping is free on orders over $75. For orders under $75, a flat shipping rate is calculated at checkout.",
+        a: "Shipping is free on orders over $99. For orders under $99, a flat shipping rate is calculated at checkout.",
       },
     ],
   },
@@ -89,7 +89,7 @@ export default function FAQPage() {
         <PageHero
           heading="Frequently Asked"
           sub={
-            <p className="text-ink-dim text-sm leading-relaxed max-w-md">
+            <p className="text-ink-dim text-base leading-relaxed max-w-md">
               Can&apos;t find what you&apos;re looking for? Reach us at{" "}
               <a
                 href="mailto:lastoyacandles@gmail.com"

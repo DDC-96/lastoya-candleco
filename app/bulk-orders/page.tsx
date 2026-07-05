@@ -7,7 +7,7 @@ import { PageHero } from "@/components/PageHero";
 
 export const metadata: Metadata = { title: "Bulk & Events" };
 
-const CONTACT_EMAIL = "lastoyacandles@examplemail.com";
+const CONTACT_EMAIL = "lastoyacandles@gmail.com";
 
 const steps = [
   {
@@ -23,7 +23,7 @@ const steps = [
   {
     n: "03",
     title: "We pour",
-    body: "Every bulk order is poured fresh — never from shelf stock. Allow 3–4 weeks from confirmation through shipment. We'll keep you updated throughout.",
+    body: "Allow 3–4 weeks from confirmation through shipment. We'll keep you updated throughout.",
   },
 ];
 
@@ -47,8 +47,7 @@ export default function BulkOrdersPage() {
           sub={
             <p className="text-ink-dim leading-[1.8] max-w-xl text-pretty">
               Candles for corporate gifts, weddings, and occasions that call for
-              something made by hand. Every unit is poured to order — nothing comes
-              off a shelf.
+              something made by hand.
             </p>
           }
         />
@@ -106,7 +105,7 @@ export default function BulkOrdersPage() {
         {/* ── CTA ────────────────────────────────────── */}
         <FadeUp delay={0.08}>
           <div className="mt-16 pt-12 border-t border-wire-faint">
-            <h2 className="font-display text-2xl text-ink mb-3">
+            <h2 className="font-display font-semibold text-2xl text-ink mb-3">
               Ready to get a quote?
             </h2>
             <p className="text-ink-dim text-sm leading-relaxed mb-8">

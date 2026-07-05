@@ -28,7 +28,7 @@ const wordVariant = {
 };
 
 const DEFAULT_HEADING_CLS =
-  "font-display font-bold text-[clamp(2.5rem,6vw,4rem)] text-ink leading-tight text-balance mb-6";
+  "font-display font-bold text-[clamp(2.5rem,6vw,4rem)] text-ink leading-tight tracking-[-0.02em] text-balance mb-6";
 
 export function PageHero({ heading, headingClassName, sub }: PageHeroProps) {
   const prefersReducedMotion = useReducedMotion();

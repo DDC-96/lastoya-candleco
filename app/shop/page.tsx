@@ -27,7 +27,7 @@ export default async function ShopPage({
         <div className="mb-12">
           <PageHero
             heading="The Collection"
-            headingClassName="font-display font-bold text-4xl md:text-5xl text-ink text-balance mb-3"
+            headingClassName="font-display font-bold text-4xl md:text-5xl text-ink text-balance tracking-[-0.02em] mb-3"
             sub={
               <p className="text-ink-dim text-sm">
                 {filtered.length} candle{filtered.length !== 1 ? "s" : ""}

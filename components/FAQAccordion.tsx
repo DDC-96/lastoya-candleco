@@ -65,7 +65,7 @@ function AccordionItem({ q, a }: FAQItem) {
             }
             className="overflow-hidden"
           >
-            <p className="pb-5 text-sm text-ink-dim leading-[1.8] max-w-prose text-pretty">
+            <p className="pb-5 text-base text-ink-dim leading-[1.8] max-w-prose text-pretty">
               {a}
             </p>
           </motion.div>

@@ -27,7 +27,7 @@ export function Footer() {
 
         {/* Collections */}
         <div>
-          <p className="text-xs font-medium tracking-[0.12em] text-ink-dim uppercase mb-4">
+          <p className="text-xs font-medium tracking-[0.12em] text-flame-text uppercase mb-4">
             Collections
           </p>
           <ul className="space-y-2">
@@ -46,7 +46,7 @@ export function Footer() {
 
         {/* Links */}
         <div>
-          <p className="text-xs font-medium tracking-[0.12em] text-ink-dim uppercase mb-4">
+          <p className="text-xs font-medium tracking-[0.12em] text-flame-text uppercase mb-4">
             Company
           </p>
           <ul className="space-y-2">
