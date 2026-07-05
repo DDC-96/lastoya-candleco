@@ -85,16 +85,16 @@ export default function FAQPage() {
 
         {/* ── Header ─────────────────────────────────── */}
         <FadeUp>
-          <h1 className="font-display text-[clamp(2.5rem,6vw,4rem)] text-ink leading-tight text-balance mb-6">
+          <h1 className="font-display font-bold text-[clamp(2.5rem,6vw,4rem)] text-ink leading-tight text-balance mb-6">
             Frequently Asked
           </h1>
           <p className="text-ink-dim text-sm leading-relaxed max-w-md">
             Can&apos;t find what you&apos;re looking for? Reach us at{" "}
             <a
-              href="mailto:lastoyacandles@examplemail.com"
+              href="mailto:lastoyacandles@gmail.com"
               className="text-flame-text hover:text-ink transition-colors underline underline-offset-2"
             >
-              lastoyacandles@examplemail.com
+              lastoyacandles@gmail.com
             </a>
             .
           </p>
@@ -114,7 +114,7 @@ export default function FAQPage() {
                     className="group border-b border-wire-faint"
                   >
                     <summary className="flex items-center justify-between gap-6 py-5 cursor-pointer list-none [&::-webkit-details-marker]:hidden">
-                      <span className="font-display text-base text-ink leading-snug">
+                      <span className="font-display font-medium text-base text-ink leading-snug">
                         {item.q}
                       </span>
                       <span className="shrink-0 w-4 h-4 flex items-center justify-center text-ink-dim group-open:text-ink transition-colors">
@@ -123,6 +123,7 @@ export default function FAQPage() {
                           height="12"
                           viewBox="0 0 12 12"
                           fill="none"
+                          aria-hidden="true"
                           className="transition-transform duration-200 group-open:rotate-45"
                         >
                           <line x1="6" y1="0" x2="6" y2="12" stroke="currentColor" strokeWidth="1.5" />

@@ -17,6 +17,7 @@ export function NewsletterForm() {
     <AnimatePresence mode="wait" initial={false}>
       {status === "success" ? (
         <motion.p
+          role="status"
           key="success"
           initial={{ opacity: 0, y: 12 }}
           animate={{ opacity: 1, y: 0 }}

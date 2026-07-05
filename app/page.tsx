@@ -63,7 +63,7 @@ export default function HomePage() {
           <FadeUp>
             <div className="flex items-end justify-between mb-12">
               <div>
-                <h2 className="font-display text-[clamp(1.75rem,4vw,2.5rem)] text-ink text-balance">
+                <h2 className="font-display font-semibold text-[clamp(1.75rem,4vw,2.5rem)] text-ink text-balance tracking-[-0.02em]">
                   The collection
                 </h2>
                 <p className="text-ink-dim text-sm mt-2">
@@ -129,7 +129,7 @@ export default function HomePage() {
       <section className="py-24 px-6 bg-panel">
         <div className="max-w-6xl mx-auto">
           <FadeUp>
-            <h2 className="font-display text-[clamp(1.75rem,4vw,2.5rem)] text-ink text-balance mb-12">
+            <h2 className="font-display text-[clamp(1.75rem,4vw,2.5rem)] text-ink text-balance mb-12 tracking-[-0.02em]">
               Shop the collection
             </h2>
           </FadeUp>
@@ -174,7 +174,7 @@ export default function HomePage() {
 
           <FadeUp delay={0.1} direction="right">
             <div className="space-y-6 max-w-prose">
-              <h2 className="font-display text-[clamp(1.75rem,4vw,2.5rem)] text-ink leading-tight text-balance">
+              <h2 className="font-display text-[clamp(1.75rem,4vw,2.5rem)] text-ink leading-tight text-balance tracking-[-0.02em]">
                 From Our Hands,<br />to Your Home.
               </h2>
               <p className="text-ink-dim leading-[1.8] text-pretty">
@@ -220,7 +220,7 @@ export default function HomePage() {
       <section className="py-24 px-6 bg-panel">
         <div className="max-w-6xl mx-auto">
           <FadeUp>
-            <h2 className="font-display text-[clamp(1.75rem,4vw,2.5rem)] text-ink text-balance mb-12">
+            <h2 className="font-display text-[clamp(1.75rem,4vw,2.5rem)] text-ink text-balance mb-12 tracking-[-0.02em]">
               From the community
             </h2>
           </FadeUp>
@@ -258,10 +258,10 @@ export default function HomePage() {
       {/* ── Newsletter ───────────────────────────────── */}
       <section className="py-24 px-6 bg-panel">
         <div className="max-w-lg mx-auto text-center">
-          <h2 className="font-display text-3xl text-ink mb-3">
+          <h2 className="font-display font-semibold text-3xl text-ink mb-3 tracking-[-0.02em]">
             New pours, <span className="text-flame-text">first.</span>
           </h2>
-          <p className="text-ink-dim text-sm leading-relaxed mb-8">
+          <p className="text-ink-dim text-sm leading-[1.78] mb-8">
             Limited editions and new scents go to the list before anywhere
             else.
           </p>

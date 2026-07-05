@@ -17,7 +17,7 @@ export function Footer() {
       <div className="max-w-6xl mx-auto px-6 py-16 grid grid-cols-1 md:grid-cols-3 gap-12">
         {/* Brand */}
         <div>
-          <p className="font-display text-xl text-ink tracking-tight">
+          <p className="font-display font-semibold text-xl text-ink tracking-tight">
             Lastoya Candle Co.
           </p>
           <p className="text-ink-dim text-sm mt-3 leading-relaxed max-w-xs">

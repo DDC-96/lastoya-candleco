@@ -104,7 +104,7 @@ export function ProductCard({
       <div className="mt-4 flex flex-col gap-1">
         <div className="flex items-start justify-between gap-2">
           <Link href={`/shop/${product.slug}`}>
-            <h3 className="font-display text-base text-ink hover:text-flame-text transition-colors leading-tight">
+            <h3 className="font-display font-semibold text-lg text-ink hover:text-flame-text transition-colors leading-tight">
               {product.name}
             </h3>
           </Link>

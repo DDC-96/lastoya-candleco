@@ -52,7 +52,7 @@ export default function CheckoutPage() {
           <div className="w-16 h-16 rounded-full border border-flame flex items-center justify-center mx-auto mb-8">
             <Check size={22} className="text-flame-text" strokeWidth={1.5} />
           </div>
-          <h1 className="font-display text-3xl text-ink mb-3">
+          <h1 className="font-display font-semibold text-3xl text-ink mb-3">
             Order placed.
           </h1>
           <p className="text-ink-dim leading-relaxed mb-2">
@@ -97,7 +97,7 @@ export default function CheckoutPage() {
           {/* ─ Contact ─ */}
           {step === "contact" && (
             <div>
-              <h1 className="font-display text-3xl text-ink mb-8">Contact</h1>
+              <h1 className="font-display font-semibold text-3xl text-ink mb-8">Contact</h1>
               <div className="space-y-4">
                 <div>
                   <label className={labelClass} htmlFor="checkout-email">Email address</label>
@@ -138,7 +138,7 @@ export default function CheckoutPage() {
                 />
                 Back
               </button>
-              <h1 className="font-display text-3xl text-ink mb-8">Shipping</h1>
+              <h1 className="font-display font-semibold text-3xl text-ink mb-8">Shipping</h1>
               <div className="space-y-4">
                 <div className="grid grid-cols-2 gap-4">
                   {(["firstName", "Last name"] as const).map((_, idx) => {
@@ -167,8 +167,9 @@ export default function CheckoutPage() {
                   ] as [keyof typeof shipping, string][]
                 ).map(([key, label]) => (
                   <div key={key}>
-                    <label className={labelClass}>{label}</label>
+                    <label className={labelClass} htmlFor={`checkout-${key}`}>{label}</label>
                     <input
+                      id={`checkout-${key}`}
                       type="text"
                       value={shipping[key]}
                       onChange={(e) =>
@@ -186,8 +187,9 @@ export default function CheckoutPage() {
                     ] as [keyof typeof shipping, string][]
                   ).map(([key, label]) => (
                     <div key={key}>
-                      <label className={labelClass}>{label}</label>
+                      <label className={labelClass} htmlFor={`checkout-${key}`}>{label}</label>
                       <input
+                        id={`checkout-${key}`}
                         type="text"
                         value={shipping[key]}
                         onChange={(e) =>
@@ -224,7 +226,7 @@ export default function CheckoutPage() {
                 />
                 Back
               </button>
-              <h1 className="font-display text-3xl text-ink mb-8">Review</h1>
+              <h1 className="font-display font-semibold text-3xl text-ink mb-8">Review</h1>
               <div className="space-y-4">
                 {/* Summary rows */}
                 {(
@@ -283,7 +285,7 @@ export default function CheckoutPage() {
         {/* ── Right: order summary ────────────────────── */}
         <aside className="lg:sticky lg:top-28 h-fit">
           <div className="bg-panel border border-wire-faint p-6 space-y-6">
-            <h2 className="font-display text-lg text-ink">Order summary</h2>
+            <h2 className="font-display font-semibold text-lg text-ink">Order summary</h2>
 
             {items.length === 0 ? (
               <p className="text-sm text-ink-dim">
@@ -309,7 +311,7 @@ export default function CheckoutPage() {
                       </span>
                     </div>
                     <div className="flex-1 min-w-0">
-                      <p className="text-sm font-display text-ink leading-tight">
+                      <p className="text-sm font-display font-medium text-ink leading-tight">
                         {item.name}
                       </p>
                       <p className="text-xs text-ink-dim mt-0.5 line-clamp-1">

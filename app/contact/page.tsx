@@ -4,7 +4,7 @@ import { FadeUp } from "@/components/FadeUp";
 
 export const metadata: Metadata = { title: "Contact" };
 
-const EMAIL = "lastoyacandles@examplemail.com";
+const EMAIL = "lastoyacandles@gmail.com";
 
 export default function ContactPage() {
   return (
