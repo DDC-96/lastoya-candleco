@@ -1,9 +1,9 @@
 import { Suspense } from "react";
 import type { Metadata } from "next";
 import { products } from "@/lib/products";
-import { ProductCard } from "@/components/ProductCard";
 import { ShopFilter } from "@/components/ShopFilter";
 import { PageHero } from "@/components/PageHero";
+import { ShopGrid } from "@/components/ShopGrid";
 
 export const metadata: Metadata = { title: "Shop" };
 
@@ -42,24 +42,10 @@ export default async function ShopPage({
           <ShopFilter activeCollection={activeCollection} />
         </Suspense>
 
-        {/* Grid */}
-        <div className="mt-10 grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-8 md:gap-10">
-          {filtered.map((product, i) => (
-            <ProductCard
-              key={product.id}
-              product={product}
-              priority={i < 4}
-            />
-          ))}
+        {/* Grid + scent lens */}
+        <div className="mt-10">
+          <ShopGrid products={filtered} />
         </div>
-
-        {filtered.length === 0 && (
-          <div className="py-24 text-center">
-            <p className="font-display text-xl text-ink-dim">
-              No candles in this collection yet.
-            </p>
-          </div>
-        )}
       </div>
     </div>
   );
