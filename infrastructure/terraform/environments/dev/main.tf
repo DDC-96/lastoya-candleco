@@ -506,6 +506,28 @@ resource "cloudflare_record" "www" {
   proxied = true
 }
 
+# ── Cloudflare DNS — email security ──────────────────────────────────────────
+# SPF: hard-fail all senders — domain sends no email yet.
+# DMARC: reject spoofed mail; aggregate reports go to dmarc-reports@.
+
+resource "cloudflare_record" "spf" {
+  zone_id = data.cloudflare_zone.main.id
+  name    = "@"
+  type    = "TXT"
+  content = "v=spf1 -all"
+  ttl     = 300
+  proxied = false
+}
+
+resource "cloudflare_record" "dmarc" {
+  zone_id = data.cloudflare_zone.main.id
+  name    = "_dmarc"
+  type    = "TXT"
+  content = "v=DMARC1; p=reject; rua=mailto:dmarc-reports@${var.domain_name}; ruf=mailto:dmarc-reports@${var.domain_name}; fo=1"
+  ttl     = 300
+  proxied = false
+}
+
 # ── CloudWatch — Lambda error alarms ─────────────────────────────────────────
 
 resource "aws_cloudwatch_metric_alarm" "lambda_errors" {
