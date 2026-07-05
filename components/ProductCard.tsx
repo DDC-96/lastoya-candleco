@@ -12,12 +12,14 @@ interface ProductCardProps {
   product: Product;
   priority?: boolean;
   staggerDelay?: number;
+  sizes?: string;
 }
 
 export function ProductCard({
   product,
   priority = false,
   staggerDelay = 0,
+  sizes = "(min-width: 1024px) 33vw, (min-width: 640px) 50vw, 100vw",
 }: ProductCardProps) {
   const [added, setAdded] = useState(false);
   const [mounted, setMounted] = useState(false);
@@ -27,7 +29,7 @@ export function ProductCard({
 
   useEffect(() => { setMounted(true); }, []);
 
-  const handleAddToCart = () => {
+  const handleAddToCart = (e?: React.MouseEvent<HTMLButtonElement>) => {
     addItem({
       id: product.id,
       name: product.name,
@@ -37,6 +39,14 @@ export function ProductCard({
     });
     setAdded(true);
     setTimeout(() => setAdded(false), 1800);
+    if (e?.currentTarget) {
+      const r = e.currentTarget.getBoundingClientRect();
+      window.dispatchEvent(
+        new CustomEvent("cart:fly", {
+          detail: { sx: r.left + r.width / 2, sy: r.top + r.height / 2 },
+        })
+      );
+    }
   };
 
   return (
@@ -54,7 +64,7 @@ export function ProductCard({
             src={product.image}
             alt={product.name}
             fill
-            sizes="(min-width: 1024px) 33vw, (min-width: 768px) 50vw, 100vw"
+            sizes={sizes}
             className="object-cover transition-transform duration-700 ease-out group-hover:scale-105"
             priority={priority}
           />
@@ -74,7 +84,7 @@ export function ProductCard({
             <motion.button
               onClick={(e) => {
                 e.preventDefault();
-                handleAddToCart();
+                handleAddToCart(e);
               }}
               whileTap={{ scale: 0.97 }}
               className="

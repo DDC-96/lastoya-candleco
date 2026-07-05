@@ -74,7 +74,11 @@ export function ShopGrid({ products }: ShopGridProps) {
       >
         {products.map((product, i) => (
           <div key={product.id} data-product-id={product.id}>
-            <ProductCard product={product} priority={i < 4} />
+            <ProductCard
+              product={product}
+              priority={i < 4}
+              sizes="(min-width: 1280px) 25vw, (min-width: 640px) 50vw, 100vw"
+            />
           </div>
         ))}
       </div>
