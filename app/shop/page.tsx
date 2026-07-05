@@ -3,7 +3,7 @@ import type { Metadata } from "next";
 import { products } from "@/lib/products";
 import { ProductCard } from "@/components/ProductCard";
 import { ShopFilter } from "@/components/ShopFilter";
-import { FadeUp } from "@/components/FadeUp";
+import { PageHero } from "@/components/PageHero";
 
 export const metadata: Metadata = { title: "Shop" };
 
@@ -22,18 +22,20 @@ export default async function ShopPage({
   return (
     <div className="pt-32 pb-24 px-6 min-h-screen">
       <div className="max-w-6xl mx-auto">
+
         {/* Header */}
-        <FadeUp>
-          <div className="mb-12">
-            <h1 className="font-display font-bold text-4xl md:text-5xl text-ink text-balance">
-              The Collection
-            </h1>
-            <p className="mt-3 text-ink-dim text-sm">
-              {filtered.length} candle{filtered.length !== 1 ? "s" : ""}
-              {activeCollection ? ` · ${activeCollection}` : ""}
-            </p>
-          </div>
-        </FadeUp>
+        <div className="mb-12">
+          <PageHero
+            heading="The Collection"
+            headingClassName="font-display font-bold text-4xl md:text-5xl text-ink text-balance mb-3"
+            sub={
+              <p className="text-ink-dim text-sm">
+                {filtered.length} candle{filtered.length !== 1 ? "s" : ""}
+                {activeCollection ? ` · ${activeCollection}` : ""}
+              </p>
+            }
+          />
+        </div>
 
         {/* Filter — must be inside Suspense since it uses useSearchParams under the hood */}
         <Suspense>
