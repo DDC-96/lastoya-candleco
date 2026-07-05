@@ -3,6 +3,7 @@ import { Urbanist } from "next/font/google";
 import "./globals.css";
 import { Nav } from "@/components/Nav";
 import { CartDrawer } from "@/components/CartDrawer";
+import { CartFlyIndicator } from "@/components/CartFlyIndicator";
 import { Footer } from "@/components/Footer";
 
 const urbanist = Urbanist({
@@ -39,6 +40,7 @@ export default function RootLayout({
       <body className="flex flex-col min-h-full antialiased">
         <Nav />
         <CartDrawer />
+        <CartFlyIndicator />
         <main className="flex-1">{children}</main>
         <Footer />
       </body>

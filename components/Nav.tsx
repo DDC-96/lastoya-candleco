@@ -18,7 +18,8 @@ const leftLinks = [
 export function Nav() {
   const [scrolled, setScrolled] = useState(false);
   const [menuOpen, setMenuOpen] = useState(false);
-  const { itemCount, openCart } = useCartStore();
+  const itemCount = useCartStore((s) => s.itemCount);
+  const openCart = useCartStore((s) => s.openCart);
   const menuRef = useRef<HTMLDivElement>(null);
 
   useEffect(() => {
@@ -137,6 +138,7 @@ export function Nav() {
             <button
               onClick={openCart}
               aria-label={`Open cart (${itemCount} items)`}
+              data-cart-button
               className={`relative p-2.5 transition-colors ${linkCls}`}
             >
               <ShoppingBag size={20} strokeWidth={1.5} />

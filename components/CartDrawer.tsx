@@ -6,10 +6,20 @@ import Link from "next/link";
 import { motion, AnimatePresence } from "framer-motion";
 import { X, Minus, Plus, ShoppingBag, ArrowRight } from "lucide-react";
 import { useCartStore } from "@/lib/cart-store";
+import { useShallow } from "zustand/react/shallow";
 
 export function CartDrawer() {
   const { items, isOpen, closeCart, removeItem, updateQuantity, total } =
-    useCartStore();
+    useCartStore(
+      useShallow((s) => ({
+        items: s.items,
+        isOpen: s.isOpen,
+        closeCart: s.closeCart,
+        removeItem: s.removeItem,
+        updateQuantity: s.updateQuantity,
+        total: s.total,
+      }))
+    );
   const overlayRef = useRef<HTMLDivElement>(null);
   const closeButtonRef = useRef<HTMLButtonElement>(null);
 
