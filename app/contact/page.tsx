@@ -18,8 +18,8 @@ export default function ContactPage() {
           heading="Contact Us"
           sub={
             <p className="text-ink-dim leading-[1.8] max-w-md text-pretty">
-              Questions about an order, a candle, or anything else — we read every
-              email and respond within 2–3 business days.
+              Whether you're checking on an order, curious about one of our candles, or simply have a question,
+              we're here to help. Every email is personally read, and we typically reply within 2-3 business days.
             </p>
           }
         />

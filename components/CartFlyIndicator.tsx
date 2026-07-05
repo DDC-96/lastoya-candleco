@@ -32,7 +32,7 @@ export function CartFlyIndicator() {
           ty: r.top + r.height / 2,
         },
       ]);
-      setTimeout(() => setFlies((f) => f.filter((i) => i.id !== id)), 550);
+      setTimeout(() => setFlies((f) => f.filter((i) => i.id !== id)), 750);
     };
 
     window.addEventListener("cart:fly", onFly);
@@ -52,7 +52,7 @@ export function CartFlyIndicator() {
             style={{ left: 0, top: 0 }}
             initial={{ x: sx - 12, y: sy - 12, scale: 1, opacity: 0.9 }}
             animate={{ x: tx - 12, y: ty - 12, scale: 0.2, opacity: 0 }}
-            transition={{ duration: 0.45, ease: [0.16, 1, 0.3, 1] }}
+            transition={{ duration: 0.65, ease: [0.16, 1, 0.3, 1] }}
           />
         ))}
       </AnimatePresence>

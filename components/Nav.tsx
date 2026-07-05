@@ -20,6 +20,7 @@ export function Nav() {
   const [menuOpen, setMenuOpen] = useState(false);
   const itemCount = useCartStore((s) => s.itemCount);
   const openCart = useCartStore((s) => s.openCart);
+  const isCartOpen = useCartStore((s) => s.isOpen);
   const menuRef = useRef<HTMLDivElement>(null);
 
   useEffect(() => {
@@ -142,7 +143,7 @@ export function Nav() {
               className={`relative p-2.5 transition-colors ${linkCls}`}
             >
               <ShoppingBag size={20} strokeWidth={1.5} />
-              {itemCount > 0 && (
+              {itemCount > 0 && !isCartOpen && (
                 <motion.span
                   key={itemCount}
                   initial={{ scale: 0.6, opacity: 0 }}
