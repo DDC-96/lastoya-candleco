@@ -494,7 +494,7 @@ resource "cloudflare_record" "apex" {
   type    = "CNAME"
   content = aws_cloudfront_distribution.main.domain_name
   ttl     = 1
-  proxied = false
+  proxied = true
 }
 
 resource "cloudflare_record" "www" {
@@ -503,7 +503,7 @@ resource "cloudflare_record" "www" {
   type    = "CNAME"
   content = aws_cloudfront_distribution.main.domain_name
   ttl     = 1
-  proxied = false
+  proxied = true
 }
 
 # ── CloudWatch — Lambda error alarms ─────────────────────────────────────────
