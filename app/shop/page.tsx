@@ -25,7 +25,7 @@ export default async function ShopPage({
         {/* Header */}
         <FadeUp>
           <div className="mb-12">
-            <h1 className="font-display text-4xl md:text-5xl text-ink text-balance">
+            <h1 className="font-display font-bold text-4xl md:text-5xl text-ink text-balance">
               The Collection
             </h1>
             <p className="mt-3 text-ink-dim text-sm">

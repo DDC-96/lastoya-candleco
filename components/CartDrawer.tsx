@@ -11,6 +11,7 @@ export function CartDrawer() {
   const { items, isOpen, closeCart, removeItem, updateQuantity, total } =
     useCartStore();
   const overlayRef = useRef<HTMLDivElement>(null);
+  const closeButtonRef = useRef<HTMLButtonElement>(null);
 
   useEffect(() => {
     if (!isOpen) return;
@@ -18,6 +19,7 @@ export function CartDrawer() {
       if (e.key === "Escape") closeCart();
     };
     document.addEventListener("keydown", handleKeyDown);
+    requestAnimationFrame(() => closeButtonRef.current?.focus());
     return () => document.removeEventListener("keydown", handleKeyDown);
   }, [isOpen, closeCart]);
 
@@ -42,6 +44,9 @@ export function CartDrawer() {
 
           {/* Drawer */}
           <motion.div
+            role="dialog"
+            aria-modal="true"
+            aria-labelledby="cart-heading"
             initial={{ x: "100%" }}
             animate={{ x: 0 }}
             exit={{ x: "100%" }}
@@ -50,7 +55,7 @@ export function CartDrawer() {
           >
             {/* Header */}
             <div className="flex items-center justify-between px-6 py-5 border-b border-wire-faint">
-              <h2 className="font-display text-lg text-ink">
+              <h2 id="cart-heading" className="font-display font-semibold text-lg text-ink">
                 Your Cart
                 {items.length > 0 && (
                   <span className="ml-2 text-sm font-sans font-normal text-ink-dim">
@@ -59,9 +64,10 @@ export function CartDrawer() {
                 )}
               </h2>
               <button
+                ref={closeButtonRef}
                 onClick={closeCart}
                 aria-label="Close cart"
-                className="text-ink-dim hover:text-ink transition-colors p-1"
+                className="text-ink-dim hover:text-ink transition-colors p-2.5"
               >
                 <X size={20} strokeWidth={1.5} />
               </button>
@@ -122,7 +128,7 @@ export function CartDrawer() {
                               <button
                                 onClick={() => removeItem(item.id)}
                                 aria-label={`Remove ${item.name}`}
-                                className="p-2 text-ink-dim hover:text-flame-text transition-colors shrink-0 mt-0.5 -mr-1"
+                                className="p-2.5 text-ink-dim hover:text-flame-text transition-colors shrink-0 mt-0.5 -mr-1"
                               >
                                 <X size={14} strokeWidth={1.5} />
                               </button>
@@ -140,7 +146,7 @@ export function CartDrawer() {
                                     updateQuantity(item.id, item.quantity - 1)
                                   }
                                   aria-label="Decrease quantity"
-                                  className="p-3 text-ink-dim hover:text-ink transition-colors"
+                                  className="p-3.5 text-ink-dim hover:text-ink transition-colors"
                                 >
                                   <Minus size={12} strokeWidth={2} />
                                 </button>
@@ -152,7 +158,7 @@ export function CartDrawer() {
                                     updateQuantity(item.id, item.quantity + 1)
                                   }
                                   aria-label="Increase quantity"
-                                  className="p-3 text-ink-dim hover:text-ink transition-colors"
+                                  className="p-3.5 text-ink-dim hover:text-ink transition-colors"
                                 >
                                   <Plus size={12} strokeWidth={2} />
                                 </button>
@@ -201,7 +207,7 @@ export function CartDrawer() {
                     flex items-center justify-center gap-2 w-full
                     bg-flame text-base py-4 text-sm font-medium tracking-wide
                     hover:bg-flame-dim transition-colors
-                    hover:shadow-[0_0_24px_0_oklch(0.72_0.130_67/0.35)]
+                    hover:shadow-[var(--glow-flame-sm)]
                     group
                   "
                 >

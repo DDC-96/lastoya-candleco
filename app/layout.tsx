@@ -1,22 +1,14 @@
 import type { Metadata } from "next";
-import { Piazzolla, Jost } from "next/font/google";
+import { Urbanist } from "next/font/google";
 import "./globals.css";
 import { Nav } from "@/components/Nav";
 import { CartDrawer } from "@/components/CartDrawer";
 import { Footer } from "@/components/Footer";
 
-const piazzolla = Piazzolla({
-  variable: "--font-piazzolla",
+const urbanist = Urbanist({
+  variable: "--font-urbanist",
   subsets: ["latin"],
-  weight: ["400", "500", "600", "700"],
-  style: ["normal", "italic"],
-  display: "swap",
-});
-
-const jost = Jost({
-  variable: "--font-jost",
-  subsets: ["latin"],
-  weight: ["300", "400", "500", "600"],
+  weight: ["300", "400", "500", "600", "700", "800", "900"],
   display: "swap",
 });
 
@@ -42,17 +34,14 @@ export default function RootLayout({
     <html
       lang="en"
       data-scroll-behavior="smooth"
-      className={`${piazzolla.variable} ${jost.variable} h-full`}
+      className={`${urbanist.variable} h-full`}
     >
       <body className="flex flex-col min-h-full antialiased">
         <Nav />
         <CartDrawer />
         <main className="flex-1">{children}</main>
         <Footer />
-      {/* impeccable-live-start */}
-<script src="http://localhost:8400/live.js"></script>
-{/* impeccable-live-end */}
-</body>
+      </body>
     </html>
   );
 }

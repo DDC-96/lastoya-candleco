@@ -15,12 +15,14 @@
   --color-overlay:    oklch(0.12 0.010 65);
   --color-flame-text: oklch(0.52 0.122 67);
   --color-base:       var(--color-night);
+  --glow-flame:       0 0 28px 0 oklch(0.72 0.130 67 / 0.40);
+  --glow-flame-sm:    0 0 24px 0 oklch(0.72 0.130 67 / 0.35);
 }
 
 /* next/font injects --font-piazzolla and --font-jost as CSS vars */
 @theme inline {
-  --font-display: var(--font-piazzolla);
-  --font-sans:    var(--font-jost);
+  --font-display: var(--font-urbanist);
+  --font-sans:    var(--font-urbanist);
 }
 
 /* ── Base ── */

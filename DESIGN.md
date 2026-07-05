@@ -16,12 +16,12 @@ colors:
   overlay: "oklch(0.12 0.010 65)"
 typography:
   display:
-    fontFamily: "Piazzolla, Georgia, serif"
+    fontFamily: "Alegreya, Georgia, serif"
     fontWeight: 400
     lineHeight: 1.05
     letterSpacing: "-0.02em"
   headline:
-    fontFamily: "Piazzolla, Georgia, serif"
+    fontFamily: "Alegreya, Georgia, serif"
     fontSize: "clamp(1.75rem, 4vw, 3rem)"
     fontWeight: 400
     lineHeight: 1.15
@@ -85,7 +85,7 @@ This system explicitly rejects three aesthetic modes. It is not the cold, white-
 - Light-first: body background at `oklch(0.97 0.008 72)`. Never a dark or neutral theme.
 - One primary accent (`flame`). Its rarity makes it mean something.
 - Zero border-radius across the entire system. Edges are commitments.
-- Piazzolla (display serif) paired with Jost (geometric sans) — heritage weight meeting contemporary legibility.
+- Alegreya (display serif) paired with Jost (geometric sans) — heritage weight meeting contemporary legibility.
 - Flat elevation: depth through three tonal surface levels, never shadows.
 - Motion is present and intentional: scroll-reveals, hover transforms, drawer transitions — all easing `cubic-bezier(0.16, 1, 0.3, 1)`. Fully reduced-motion-safe.
 
@@ -118,20 +118,20 @@ A single-accent palette built around one moment of warmth in a dark field. The a
 
 ## 3. Typography
 
-**Display Font:** Piazzolla (variable serif, with Georgia, serif fallback)
+**Display Font:** Alegreya (humanist-calligraphic serif, with Georgia, serif fallback)
 **Body Font:** Jost (geometric-humanist sans, with system-ui fallback)
 
-**Character:** Piazzolla is a variable-axis serif with ink-trap details designed for editorial density — it carries the weight of a handwritten letter and the precision of a typeset one. Jost is a geometric sans with humanist corrections: clean without coldness, legible without being clinical. Together they read like a brand that takes its words seriously.
+**Character:** Alegreya is a humanist serif designed by Huerta Tipográfica (Buenos Aires) with calligraphic origins — every stroke implies a hand. It carries both the weight of correspondence and the warmth of something drawn, not constructed. Jost is a geometric sans with humanist corrections: clean without coldness, legible without being clinical. Together they read like a brand that takes its words seriously and means every one of them.
 
 ### Hierarchy
-- **Display** (weight 400, `clamp(2.5rem, 7vw, 5.5rem)`, line-height 1.05, tracking -0.02em): Page heroes, product names on PDP. Used at large scale where Piazzolla's ink traps become visible.
+- **Display** (weight 400, `clamp(2.5rem, 7vw, 5.5rem)`, line-height 1.05, tracking -0.02em): Page heroes, product names on PDP. Used at large scale where Alegreya's calligraphic stroke contrast becomes visible.
 - **Headline** (weight 400, `clamp(1.75rem, 4vw, 3rem)`, line-height 1.15): Section headings — "The collection", "Made slowly, on purpose." `text-wrap: balance` on all h1–h3.
 - **Title** (weight 400, `1.25rem–1.5rem`, line-height 1.3): Product names in cards, cart items, checkout summaries.
 - **Body** (weight 400, `1rem`, line-height 1.78): Long-form prose — brand story, product descriptions. Max line length 65–75ch. `text-wrap: pretty` on multi-paragraph prose.
-- **Label** (weight 500, `0.75rem`, letter-spacing 0.10–0.20em, uppercase): Section kickers, filter pills, collection badges, field labels. Jost only. Piazzolla never in uppercase at small scale — the serif details collapse.
+- **Label** (weight 500, `0.75rem`, letter-spacing 0.10–0.20em, uppercase): Section kickers, filter pills, collection badges, field labels. Jost only. Alegreya never in uppercase at small scale — the calligraphic serifs collapse.
 
 ### Named Rules
-**The Piazzolla Ceiling Rule.** Piazzolla is a display face. Never use it for body copy below 18px, navigation links, form labels, or button text. At small scale its ink-trap details fight legibility. Jost handles everything below 18px.
+**The Alegreya Ceiling Rule.** Alegreya is a display face. Never use it for body copy below 18px, navigation links, form labels, or button text. At small scale its calligraphic details fight legibility. Jost handles everything below 18px.
 
 **The Tracking Floor Rule.** Display headings use `tracking: -0.02em` minimum. Going tighter than `-0.04em` causes letterforms to touch; looser than `0` at display scale reads as insecure. Labels use `tracking: 0.10em` or wider — never tight-tracked uppercase.
 
@@ -197,7 +197,7 @@ No card wrapper. The affordance is the image — no border, no shadow, no contai
 ### Do:
 - **Do** use `oklch(0.97 0.008 72)` (`night`) as the only body background. Never swap in a dark or neutral theme, even for sub-pages.
 - **Do** reserve `flame` for CTAs, prices, and one interactive state per component. Count instances per screen; three is the ceiling.
-- **Do** pair Piazzolla display headings with Jost body text. This is the only approved pairing.
+- **Do** pair Alegreya display headings with Jost body text. This is the only approved pairing.
 - **Do** use `text-wrap: balance` on h1–h3 and `text-wrap: pretty` on long prose paragraphs.
 - **Do** use OKLCH throughout. This is the project's canonical color format. If a tool requires hex, convert at the tool boundary; do not change the source tokens.
 - **Do** reference the Zapotec meaning of the brand name — "my heart, my love" — in copy that contextualizes heritage. It is not a footnote; it is the product story.
@@ -211,7 +211,7 @@ No card wrapper. The affordance is the image — no border, no shadow, no contai
 - **Don't** introduce cold, austereaesthetics — white backgrounds, sparse European-minimalist layouts, "expensive silence." This is not Aesop. This is not Diptyque. The brand is warm and present, not aspirationally distant.
 - **Don't** use pastel colors, rounded button corners, motivational copy ("self-care", "ritual", "glow up"), or Instagram wellness visual language of any kind.
 - **Don't** use kraft textures, handwritten fonts, twine-and-mason-jar visual language, or any rustic-Etsy aesthetic. Zapotec heritage is not folk kitsch.
-- **Don't** use Piazzolla below 18px, in uppercase labels, or for body text. It is a display face only.
+- **Don't** use Alegreya below 18px, in uppercase labels, or for body text. It is a display face only.
 - **Don't** introduce new palette hues. `flame`, `ember`, and the neutral ramp are the full color vocabulary. There is no secondary brand color waiting to be added.
 - **Don't** add border-radius to buttons or inputs. Zero radius is structural; it is not a default to override per component.
 - **Don't** add eyebrow labels (small all-caps tracked kickers) above every section heading. One deliberate kicker in the hero is brand voice. An eyebrow before every `<h2>` is AI grammar.

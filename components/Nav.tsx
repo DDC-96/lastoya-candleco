@@ -105,7 +105,7 @@ export function Nav() {
               aria-label={menuOpen ? "Close menu" : "Open menu"}
               aria-expanded={menuOpen}
               aria-controls="mobile-menu"
-              className={`p-1 transition-colors ${linkCls}`}
+              className={`p-2.5 transition-colors ${linkCls}`}
             >
               {menuOpen ? (
                 <X size={20} strokeWidth={1.5} />
@@ -138,7 +138,7 @@ export function Nav() {
             <button
               onClick={openCart}
               aria-label={`Open cart (${itemCount} items)`}
-              className={`relative p-1 transition-colors ${linkCls}`}
+              className={`relative p-2.5 transition-colors ${linkCls}`}
             >
               <ShoppingBag size={20} strokeWidth={1.5} />
               {itemCount > 0 && (
