@@ -1,0 +1,17 @@
+aws_region    = "us-west-1"
+project       = "lastoya-candleco"
+environment   = "dev"
+domain_name   = "lastoyacandleco.com"
+
+# Doppler service token — create one at: Doppler dashboard → your project → dev config → Service Tokens
+# Run: doppler configs tokens create terraform-dev --project lastoya-candleco --config dev
+doppler_token = ""
+
+# CLOUDFLARE_API_TOKEN and CLOUDFLARE_ZONE_ID are NOT Terraform variables.
+# The Cloudflare provider reads CLOUDFLARE_API_TOKEN from the environment natively.
+# Store both in Doppler, then run all Terraform commands as:
+#
+#   doppler run --project lastoya-candleco --config dev -- terraform plan
+#   doppler run --project lastoya-candleco --config dev -- terraform apply
+#
+# This injects CLOUDFLARE_API_TOKEN automatically. Zone ID is resolved from the domain.
