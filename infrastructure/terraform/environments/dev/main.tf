@@ -506,6 +506,39 @@ resource "cloudflare_record" "www" {
   proxied = true
 }
 
+# ── Cloudflare Email Routing — DMARC reports → personal inbox ─────────────────
+# Enables Cloudflare Email Routing on the zone (auto-adds MX records).
+# Destination address requires one-time verification via the email Cloudflare sends.
+
+resource "cloudflare_email_routing_settings" "main" {
+  zone_id = data.cloudflare_zone.main.id
+  enabled = true
+}
+
+# Destination address must be verified manually in the Cloudflare dashboard:
+# Email → Email Routing → Destination addresses → Add address → okta-developer@tutamail.com
+# (Account-level API permission required to manage this via Terraform.)
+
+resource "cloudflare_email_routing_rule" "dmarc_reports" {
+  zone_id  = data.cloudflare_zone.main.id
+  name     = "DMARC reports"
+  enabled  = true
+  priority = 1
+
+  matcher {
+    type  = "literal"
+    field = "to"
+    value = "dmarc-reports@${var.domain_name}"
+  }
+
+  action {
+    type  = "forward"
+    value = ["okta-developer@tutamail.com"]
+  }
+
+  depends_on = [cloudflare_email_routing_settings.main]
+}
+
 # ── Cloudflare DNS — email security ──────────────────────────────────────────
 # SPF: hard-fail all senders — domain sends no email yet.
 # DMARC: reject spoofed mail; aggregate reports go to dmarc-reports@.
